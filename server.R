@@ -33,7 +33,8 @@ Preckhow_oxless50<-function(L,Z,TW) L/((18*Z/(10+Z))+1.05*(Z/TW)*exp(0.012*Z/TW)
 Preckhow_oxmore50<-function(L,Z,TW) L/( (2.77*Z)+1.05*(Z/TW)*exp(0.0011*Z/TW) )
 Pwalker_gen<-function(PIN,TW) PIN*(1/(1+0.824*(TW^0.454)))
 PvollenOECD<-function(PIN,TW) 1.55*((PIN/(1+((TW)^0.5)))^0.82)
-Rkirchdill<-function(QS) 0.426*exp(-0.271*QS)+0.574*exp(-0.00949*QS)
+Rkirchdillunder10<-function(QS) 0.201*exp(-0.0425*QS)+0.574*exp(-0.00949*QS)
+Rkirchdillover10<-function(QS) 0.426*exp(-0.271*QS)+0.574*exp(-0.00949*QS)
 Pkirchdill<-function(L,Z,p,R) L*(1-R)/(Z*p)
 Pvollenshallow<-function(PIN,TW) 1.02*( ( PIN/(1+((TW)^0.5)) )^0.88 )
 Rlarsonmercier<-function(p) 1/(1+p^0.5)
@@ -105,7 +106,7 @@ observe({
     B$df[9,2]<- PvollenOECD(Pin(),tau())
 })
 observe({
-    B$df[10,2]<- Pkirchdill( L(),z()/3.28,littlep(), Rkirchdill(qs()/3.28) )
+    B$df[10,2]<- ifelse(qs()<10*3.28, Pkirchdill( L(),z()/3.28,littlep(), Rkirchdillunder10(qs()/3.28) ), Pkirchdill( L(),z()/3.28,littlep(), Rkirchdillover10(qs()/3.28) )  )
 })
 observe({
     B$df[11,2]<- Pvollenshallow( Pin(),tau() )

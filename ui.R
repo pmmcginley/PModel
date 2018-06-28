@@ -12,7 +12,9 @@ shinyUI(fluidPage(
          column(4,
                numericInput("area", "Lake Area (acres):", 200),
                numericInput("vol", "Lake Volume (acre-ft):", 2000),
-               numericInput("Q", "Watershed Runoff Depth (inches/yr):", 10)
+               numericInput("Q", "Watershed Runoff Depth (inches/yr):", 10),
+               ("Based on the Wisconsin Lake Modeling Suite (WiLMS)"),
+               ( "developed by John Panuska and Jeff Kreider with the Wisconsin DNR")
 
 )),
       tabPanel("Watershed",
