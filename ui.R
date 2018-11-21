@@ -8,7 +8,7 @@ shinyUI(fluidPage(
   titlePanel("Simple WiLMS... The Lake Phosphorus Model"),
 
   tabsetPanel(type="tabs",
-     tabPanel("Input",
+     tabPanel("Lake Input",
          column(4,
                numericInput("area", "Lake Area (acres):", 200),
                numericInput("vol", "Lake Volume (acre-ft):", 2000),
@@ -17,7 +17,7 @@ shinyUI(fluidPage(
                ( "developed by John Panuska and Jeff Kreider with the Wisconsin DNR")
 
 )),
-      tabPanel("Watershed",
+      tabPanel("Watershed Input",
          column(2,
             numericInput("A.ag1", "Ag Row Crop (acres):", 0),
             numericInput("A.ag2", "Ag Mixed Ag (acres):", 0),
